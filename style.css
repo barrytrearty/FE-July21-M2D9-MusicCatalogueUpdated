@@ -34,21 +34,22 @@ h4 {
 
 .album-box {
   margin-top: 10px;
+  transition: transform 0.3s;
 }
 
 .card img {
   position: relative;
 }
 
-img {
-  width: 220px;
-  height: 220px;
+.style-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.navbar {
-  width: 100%;
-  margin: auto;
-  /* padding-top: 30px; */
+img {
+  max-width: 220px;
+  height: autox;
 }
 
 a.navbar-brand {
@@ -100,6 +101,7 @@ a.navbar-brand {
 .album-box:hover {
   color: black;
   transform: scale(1.05);
+  z-index: 1;
   /* transform: translateY(-5%); */
 }
 
@@ -116,10 +118,26 @@ ol li {
   text-align: left;
 }
 
+.move-pic {
+  transition: transform 0.3s;
+}
+
 .move-pic:hover {
   transform: translateY(-5%);
-  /* transform: scale(1.1); */
-  /* z-index: 4; */
+  z-index: 1;
+}
+
+.add-track {
+  transition: all 0.3;
+}
+
+.btn.btn-danger:hover,
+.add-track:hover {
+  box-shadow: 2px 3px black;
+}
+
+.add-track:active {
+  box-shadow: -2px -3px black;
 }
 
 .btn.btn-danger {

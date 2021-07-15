@@ -146,7 +146,7 @@
 <!-- </div> -->
 
     <div class="container">
-    <h2 class="plain" id="albums">Albums</h2>
+    <h2 class="plain" id="albums-header"> Albums</h2>
       <div id="album-boxes" class="row"></div>
     </div>
 
@@ -243,20 +243,6 @@
       </div>
     </div>
 
-    <!-- <div class="container mt-3">
-       <h2 id="description">Arctic Monkeys</h2> 
-      <div class="media">
-      <img src="album-covers/arctic-monkeys.png" class="align-self-end mr-3" alt="...">
-      <div class="media-body">
-        <h5 class="mt-0">Whatever People Say I Am, That's What I'm Not</h5>
-        <p>
-          A bold, brash debut that journeys through the thrill of a night on
-          the town and the shallow despair the morning after. Poetic lyrics
-          spat out by the prophetic Alex Turner cement this as a classic.
-        </p>
-      </div>
-    </div></div> -->
-
     <div id="monkeys-tracklist" class="container d-none">
     <table class="table table-striped">
       <thead>
@@ -351,7 +337,7 @@
           <th scope="row"></th>
           <td>Add New Track</td>
           <td></td>
-          <th scope="col"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+          <th scope="col"><button type="button" class="btn btn-success add-track" data-toggle="modal" data-target="#exampleModal">
             +
           </button></th>
         </tr>
@@ -363,26 +349,28 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Add New Track</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body text-left">
-            <label for="track-number">Track Number</label>
-            <input id="track-number" type="text" placeholder="Track Number"><br>
-            <label for="title">Title</label>
-            <input type="text" placeholder="Title"><br>
-            <label for="duration">Duration</label>
-            <input type="text" placeholder="Duration"><br>
-            <label for="featuring">Featuring</label>
-            <input type="text" placeholder="Featuring"><br>
-            <label for="live">Live</label>
-            <input type="checkbox" placeholder="Live">
+          <!-- <div class="mx-auto"> -->
+          <div class="row row-cols-2 modal-body text-left no-gutters">
+            <label class="col" for="track-number">Track Number</label>
+            <input class="col" id="track-number" type="text" placeholder="Track Number"><br>
+            <label class="col" for="title">Title</label>
+            <input class="col" type="text" placeholder="Title"><br>
+            <label class="col" for="duration">Duration</label>
+            <input class="col" type="text" placeholder="Duration"><br>
+            <label class="col" for="featuring">Featuring</label>
+            <input class="col" type="text" placeholder="Featuring"><br>
+            <label class="col" for="live">Live</label>
+            <input class="col" type="checkbox" placeholder="Live">
           </div>
+        <!-- </div> -->
           <div class="modal-footer">
             <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add</button>
+            <button type="button" class="btn btn-primary add-track">Add</button>
           </div>
         </div>
       </div>
@@ -402,13 +390,13 @@
       >
         Display Tapestry
       </button>
-      <div id="tapestry-row" class="row"></div>
+      <div id="tapestry-row" class="row no-gutters"></div>
     </div>
 
     <footer>
       <div class="container">
         <nav class="navbar navbar-expand-lg">
-          <a class="navbar-brand" href="#albums">Back to top</a>
+          <a class="navbar-brand" href="#albums-header">Back to top</a>
           <button
             class="navbar-toggler"
             type="button"

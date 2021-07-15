@@ -9,17 +9,20 @@ const jumbotronSubtitle1 = document.getElementById("jumbotron-subtitle1");
 const jumbotronSubtitle2 = document.getElementById("jumbotron-subtitle2");
 const navbar = document.getElementById("my-navbar");
 const buttons = document.querySelectorAll(".btn.btn-danger");
+const albumsHeader = document.getElementById("albums-header");
 
 const toggleDisplay = function (event) {
   let element = event.target.closest(".card").childNodes[5];
   element.classList.toggle("d-none");
 };
 
-const addBadge = function (div, object) {
-  let badge = document.createElement("span");
-  badge.innerText = `${object.genre}`;
-  badge.classList.add("badge", "badge-info");
-  div.appendChild(badge);
+const createBadges = function (objarr, cardArray) {
+  for (i = 0; i < objarr.length; i++) {
+    let badge = document.createElement("span");
+    badge.innerText = `${objarr[i].genre}`;
+    badge.classList.add("badge", "badge-info", "style-badge", "d-none");
+    cardArray[i].appendChild(badge);
+  }
 };
 
 const createAlbumBox = function (object) {
@@ -42,32 +45,37 @@ const createAlbumBox = function (object) {
 </div>`;
   albumDiv.classList.add("col-6", "col-md-4", "col-lg-3", "album-box");
   albumDiv.addEventListener("click", toggleDisplay);
-  let genreBadge = addBadge(albumDiv, object);
-  // genreBadge.style.left = 0;
+
   albumBoxes.appendChild(albumDiv);
-  // const addBadge = function () {
-  //   let badge = document.createElement("span");
-  //   badge.innerText = `${object.genre}`;
-  //   badge.classList.add("badge", "badge-info");
-  //   albumDiv.appendChild(badge);
-  // };
 };
 
 const displayAlbumBoxes = function (arr) {
   for (i = 0; i < arr.length; i++) {
     createAlbumBox(arr[i]);
   }
+
+  //Display Badges
+  let cardsForBadge = document.querySelectorAll(".card.cardhover");
+  createBadges(albums, cardsForBadge);
+  let createdBadges = document.getElementsByClassName("style-badge");
+  albumsHeader.addEventListener("click", function () {
+    for (badge of createdBadges) {
+      badge.classList.toggle("d-none");
+    }
+  });
 };
 
 const createTapestry = function (albumName) {
   let tapestryTile = document.createElement("div");
-  tapestryTile.innerHTML = `<img class="move-pic" src="album-covers/${albumName}.png" alt="" />`;
+  tapestryTile.innerHTML = `<img src="album-covers/${albumName}.png" alt="" />`;
   tapestryTile.classList.add(
+    "move-pic",
     "col-12",
     "col-sm-6",
     "col-md-4",
     "col-lg-3",
     "col-xl-2"
+    // "img-fluid"
   );
   tapestryRow.appendChild(tapestryTile);
 };
@@ -245,5 +253,6 @@ const albumCovers = [
 // window.onload(
 displayJumbotron();
 displayAlbumBoxes(albums);
+// createBadges();
 // displayTapestry(albumCovers);
 // );
