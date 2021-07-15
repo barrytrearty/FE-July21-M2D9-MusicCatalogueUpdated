@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radio Barry</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+<!-- EXERCISE 1
+        Create a Jumbotron section with a quick explanation / image of the website.
+        Make it appear with a fade-in animation effect when the page loads.
+    -->
+
+    <!-- EXERCISE 2
+        Use the Bootstrap Card to contain every album in the favorite list.
+        Use the elements of a card to display nicely the album informations such as album title, artist, year, etc..
+    -->
+
+    <!-- EXERCISE 3
+        Foreach album in the favorite list, place a badge on top of it with the genre of the album
+    -->
+
+    <!-- EXERCISE 4
+        Create a section with an album tracklist inside a Bootstrap table.
+        The row colors of the table must be alternated.
+
+        There should be a column for the track order number, one for the title and one for the track duration.
+        (If you want, you can also add extra columns)
+    -->
+
+    <!-- EXERCISE 5
+        Add a DELETE bootstrap button at the end of each row of the tracklist. 
+        Attach the functionality to remove its row when it gets clicked.  
+
+        ##EXTRA##
+        Make only one button visible at a time, for each row, when the single row gets hovered. 
+        Animate it with a fade-in effect upon the user hovering and fade-out when he/she goes away from it.
+    -->
+
+    <!-- EXERCISE 6
+        Add an "Add Track" button under the tracklist of the album. 
+        It should have a nice shadow transition when it gets hovered (with the box-shadow property) to look like 
+        the button was elevating itself every time the user hovers onto it.        
+    -->
+
+    <!-- EXERCISE 7
+        On the click of "Add Track" button, a modal should appear.
+        (check in the documentation the modal+button example)
+        
+        The modal shall contain input fields with (avoid using a <form>):
+        - Track number
+        - Track title
+        - Track duration
+        - Track featuring
+        - Live Track (checkbox)
+
+        The fields should be inside an Input Group and divided in 2 columns.
+    -->
+
+    <!-- EXERCISE 8
+        The modal should contain 2 buttons at the bottom:
+        - Add => Adds a new track in the tracklist with the data of the input fields.
+        - Close => closes the modal
+
+        https://getbootstrap.com/docs/4.6/components/alerts/
+        [EXTRA] Make the message disappear after 5 seconds
+        https://www.w3schools.com/jsref/met_win_settimeout.asp
+    -->
+
+    <!-- EXERCISE 8
+        Alert the user with a success message when the track gets added, or when a track gets deleted.
+     -->
+
+
+    <!-- ############### -->
+    <!-- ###  EXTRA  ### -->
+    <!-- ############### -->
+
+    <!-- EXERCISE 9
+         All the field (except for Feat. and Live Track) are required fields and require validation.
+         If the user clicks on the Add button and some fields are empty, a warning alert must be shown
+     -->
+
+    <!-- EXERCISE 10
+        Make sure the "Close" button clears out the input fields AND closes the modal
+     -->
+
+    <!-- EXERCISE 11
+        Considering the "Add Track" functionality that you've created on ex. 8: 
+         - The new list-element added to the list should appear with a fade-in effect
+     -->
+
+    <!-- EXERCISE 12
+        Considering the button you've created in ex. 5 that deletes the row:
+        Add a fade-out effect to the row before it gets removed, using a CSS transition effect
+    -->
+  <div id = "jumbotron-heading" class="jumbotron jumbotron-fluid jumbotron-animation">
+    <div class="container">
+      <h1  id = "jumbotron-h1" class="display-4">Welcome to Radio Barry</h1>
+      <p id="jumbotron-subtitle1" class="lead mt-5">All of the Music</p>
+      <p id="jumbotron-subtitle2" class="lead">All of The Time</p>
+    </div>
+    
+    <!-- navbar added inside jumbotron -->
+    <div id= "my-navbar"class="nav-background-color bg-light">
+    <div class = "container">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <a class="navbar-brand" href="#">Radio Barry</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#albums">Albums <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#description">Description</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#tapestry">Tapestry</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+  </div>
+
+
+
+<!-- <div class="container"> -->
+
+<!-- </div> -->
+
+    <div class="container">
+    <h2 class="plain" id="albums">Albums</h2>
+      <div id="album-boxes" class="row"></div>
+    </div>
+
+    <div class="container">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container mt-3">
+              <h2 id="description">Arctic Monkeys</h2> 
+             <div class="media">
+             <img src="album-covers/arctic-monkeys.png" class="align-self-start mr-3" alt="..." onclick=displayTrackList()>
+             <div class="media-body">
+               <h5 class="mt-0">Whatever People Say I Am, That's What I'm Not</h5>
+               <p>
+                 A bold, brash debut that journeys through the thrill of a night on
+                 the town and the shallow despair the morning after. Poetic lyrics
+                 spat out by the prophetic Alex Turner cement this as a classic.
+               </p>
+             </div>
+           </div></div>
+          </div>
+          <div class="carousel-item">
+            <div class="container mt-3">
+              <h2 id="description">The Strokes</h2> 
+             <div class="media">
+             <img src="album-covers/strokes.png" class="align-self-start mr-3" alt="...">
+             <div class="media-body">
+               <h5 class="mt-0">Is This It?</h5>
+               <p>
+                 Downbeat, grainy, raw. Iconic. Another debut album that seems to capture youth in a bottle.
+               </p>
+             </div>
+           </div></div>
+          </div>
+          <div class="carousel-item">
+            <div class="container mt-3">
+              <h2 id="description">Nirvana</h2> 
+             <div class="media">
+             <img src="album-covers/nevermind.png" class="align-self-start mr-3" alt="...">
+             <div class="media-body">
+               <h5 class="mt-0">Nevermind</h5>
+               <p>
+                 A bold, brash debut that journeys through the thrill of a night on
+                 the town and the shallow despair the morning after. Poetic lyrics
+                 spat out by the prophetic Alex Turner cement this as a classic.
+               </p>
+             </div>
+           </div></div>
+          </div>
+          <div class="carousel-item">
+            <div class="container mt-3">
+              <h2 id="description">Kendrick Lamar</h2> 
+             <div class="media">
+             <img src="album-covers/good-kid-mad-city.png" class="align-self-start mr-3" alt="...">
+             <div class="media-body">
+               <h5 class="mt-0">Good Kid, M.A.A.D City</h5>
+               <p>
+                 A bold, brash debut that journeys through the thrill of a night on
+                 the town and the shallow despair the morning after. Poetic lyrics
+                 spat out by the prophetic Alex Turner cement this as a classic.
+               </p>
+             </div>
+           </div></div>
+          </div>
+          <div class="carousel-item">
+            <div class="container mt-3">
+              <h2 id="description">Fontaines DC</h2> 
+             <div class="media">
+             <img src="album-covers/dogrel.png" class="align-self-start mr-3" alt="...">
+             <div class="media-body">
+               <h5 class="mt-0">Dogrel</h5>
+               <p>
+                 A bold, brash debut that journeys through the thrill of a night on
+                 the town and the shallow despair the morning after. Poetic lyrics
+                 spat out by the prophetic Alex Turner cement this as a classic.
+               </p>
+             </div>
+           </div></div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- <div class="container mt-3">
+       <h2 id="description">Arctic Monkeys</h2> 
+      <div class="media">
+      <img src="album-covers/arctic-monkeys.png" class="align-self-end mr-3" alt="...">
+      <div class="media-body">
+        <h5 class="mt-0">Whatever People Say I Am, That's What I'm Not</h5>
+        <p>
+          A bold, brash debut that journeys through the thrill of a night on
+          the town and the shallow despair the morning after. Poetic lyrics
+          spat out by the prophetic Alex Turner cement this as a classic.
+        </p>
+      </div>
+    </div></div> -->
+
+    <div id="monkeys-tracklist" class="container d-none">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Track Order</th>
+          <th scope="col">Title</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="track-row">
+          <th scope="row">1</th>
+          <td>The View from the Afternoon</td>
+          <td>3.38</td>
+          <th scope="col"><button type="button" class="btn btn-danger">-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">2</th>
+          <td>I Bet You Look Good on the Dancefloor</td>
+          <td>2.53</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">3</th>
+          <td>Fake Tales of San Francisco</td>
+          <td>2.57</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">4</th>
+          <td>Dancing Shoes</td>
+          <td>2.21</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">5</th>
+          <td>You Probably Couldn't See for the Lights but You Were Staring
+            Straight at Me</td>
+          <td>2.10</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">6</th>
+          <td>Still Take You Home</td>
+          <td>2.53</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">7</th>
+          <td>Riot Van</td>
+          <td>2.14</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">8</th>
+          <td>Red Light Indicates Doors Are Secured</td>
+          <td>2.23</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">9</th>
+          <td>Mardy Bum</td>
+          <td>2.55</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">10</th>
+          <td>Perhaps Vampires Is a Bit Strong But...</td>
+          <td>4.28</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">11</th>
+          <td>When the Sun Goes Down</td>
+          <td>3.20</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">12</th>
+          <td>From the Ritz to the Rubble</td>
+          <td>3.13</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" ">
+          <th scope="row">13</th>
+          <td>A Certain Romance</td>
+          <td>5.31</td>
+          <th scope="col"><button type="button" class="btn btn-danger" >-</button></th>
+        </tr>
+        <tr class="track-row" id="addTrack">
+          <th scope="row"></th>
+          <td>Add New Track</td>
+          <td></td>
+          <th scope="col"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+            +
+          </button></th>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- MODAL -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-left">
+            <label for="track-number">Track Number</label>
+            <input id="track-number" type="text" placeholder="Track Number"><br>
+            <label for="title">Title</label>
+            <input type="text" placeholder="Title"><br>
+            <label for="duration">Duration</label>
+            <input type="text" placeholder="Duration"><br>
+            <label for="featuring">Featuring</label>
+            <input type="text" placeholder="Featuring"><br>
+            <label for="live">Live</label>
+            <input type="checkbox" placeholder="Live">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- MODAL -->
+
+
+</div>
+
+    <div class="container">
+      <h2 id="tapestry">Tapestry</h2>
+      <button
+        id="tapestry-button"
+        type="button"
+        class="btn btn-outline-success"
+        onclick="displayTapestry(albumCovers)"";
+      >
+        Display Tapestry
+      </button>
+      <div id="tapestry-row" class="row"></div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand" href="#albums">Back to top</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#"
+                  >LinkedIn <span class="sr-only">LinkedIn</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Spotify</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Github</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="#">Disabled</a>
+              </li> -->
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+  </body>
+</html>
