@@ -106,11 +106,15 @@
   <div id = "jumbotron-heading" class="jumbotron jumbotron-fluid jumbotron-animation">
     <div class="container">
       <h1  id = "jumbotron-h1" class="display-4">Welcome to Radio Barry</h1>
-      <p id="jumbotron-subtitle1" class="lead mt-5">All of the Music</p>
-      <p id="jumbotron-subtitle2" class="lead">All of The Time</p>
+      <div class="subtitle">
+        <p id="jumbotron-subtitle1" class="lead mt-5"> <span id="span1">It's Friday</span> <span id="span2">Then</span>  </p>
+        <p id="jumbotron-subtitle2" class="lead"> <span id="span3"> It's Saturday</span> <span id="span4">Sunday</span> </p>   
+        <p id="jumbotron-subtitle3" class="lead"> <span id="span5">WHAT</span> </p>
+    </div>   
     </div>
     
     <!-- navbar added inside jumbotron -->
+    <div class="sticky">
     <div id= "my-navbar"class="nav-background-color bg-light">
     <div class = "container">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -136,7 +140,7 @@
       </div>
     </nav>
   </div>
-</div>
+</div></div>
   </div>
 
 
@@ -354,20 +358,27 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <!-- <div class="mx-auto"> -->
-          <div class="row row-cols-2 modal-body text-left no-gutters">
-            <label class="col" for="track-number">Track Number</label>
-            <input class="col" id="track-number" type="text" placeholder="Track Number"><br>
-            <label class="col" for="title">Title</label>
-            <input class="col" type="text" placeholder="Title"><br>
-            <label class="col" for="duration">Duration</label>
-            <input class="col" type="text" placeholder="Duration"><br>
-            <label class="col" for="featuring">Featuring</label>
-            <input class="col" type="text" placeholder="Featuring"><br>
-            <label class="col" for="live">Live</label>
-            <input class="col" type="checkbox" placeholder="Live">
-          </div>
-        <!-- </div> -->
+
+<div class="modal-body">
+  <div class="row row-cols-2 form-group">
+    <div class="col">
+    <label for="track-number" class="col-form-label">Track Number:</label>
+    <input type="text" class="form-control" id="track-number"></div>
+    <div class="col">
+    <label for="title" class="col-form-label">Title:</label>
+    <input type="text" class="form-control" id="title"></div>
+    <div class="col">
+    <label for="duration" class="col-form-label">Duration:</label>
+    <input type="text" class="form-control" id="duration"></div>
+    <div class="col">
+    <label for="featuring" class="col-form-label">Featuring:</label>
+    <input type="text" class="form-control" id="featuring"></div>
+    <div class="col">
+    <label for="live-track" class="col-form-label">Performed Live:</label>
+    <input type="checkbox" class="form-control" id="live-track"></div></div>
+  </div>
+</div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary add-track">Add</button>
